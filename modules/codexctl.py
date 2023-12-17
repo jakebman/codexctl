@@ -84,7 +84,9 @@ def version_lookup(version, device):
     )
 
 
-def connect_to_rm(args, ip="10.11.99.1"):
+def connect_to_rm(args, ip=None):
+    if ip is None:
+        ip = args.ip or "10.11.99.1"
     client = paramiko.client.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
@@ -248,6 +250,8 @@ def do_status(args):
             )
         if len(get_host_ip()) == 1:
             ip = "10.11.99.1"
+        elif args.ip:
+            ip = args.ip
         else:
             ip = get_remarkable_ip()
 
@@ -369,7 +373,7 @@ def do_install(args, device_type):
 
             break
 
-        remote_ip = get_remarkable_ip()
+        remote_ip = args.ip or get_remarkable_ip()
 
         remarkable_remote = connect_to_rm(args, remote_ip)
 
@@ -466,6 +470,9 @@ def do_restore(args):
         if len(get_host_ip()) == 1:
             print("Detected as USB connection")
             remote_ip = "10.11.99.1"
+        elif args.ip:
+            print("Trusting user input remarkable IP")
+            remote_ip = args.ip
         else:
             print("Detected as WiFi connection")
             remote_ip = get_remarkable_ip()
@@ -550,6 +557,8 @@ def main():
     parser.add_argument(
         "--verbose", required=False, help="Enable verbose logging", action="store_true"
     )
+    parser.add_argument(
+        "--ip", required=False, help="an IP/hostname for your remarkable")
 
     subparsers = parser.add_subparsers(dest="command")
     subparsers.required = True  # This fixes a bug with older versions of python
