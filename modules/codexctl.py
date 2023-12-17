@@ -171,10 +171,10 @@ def enable_web_over_usb(remarkable_remote=None):
 		with open(r'/home/root/.config/remarkable/xochitl.conf', 'r') as file:
 			fileContents = file.read()
 			fileContents = re.sub("WebInterfaceEnabled=.*", "WebInterfaceEnabled=true", fileContents)
-  
+
 		with open(r'/home/root/.config/remarkable/xochitl.conf', 'w') as file:
 			file.write(fileContents)
-			
+
 	else:
 		remarkable_remote.exec_command("sed -i 's/WebInterfaceEnabled=.*/WebInterfaceEnabled=true/g' /home/root/.config/remarkable/xochitl.conf")
 """
@@ -588,7 +588,7 @@ def main():
     subparsers.add_parser(
         "restore", help="Restores to previous version installed on device"
     )
-    
+
     subparsers.add_parser("list", help="List all versions available for use")
 
     install.add_argument("version", help="Version to install")
@@ -688,7 +688,7 @@ def main():
 
     elif choice == "backup":
         do_backup(args)
-    
+
     elif choice == "upload":
         do_upload(args)
 
