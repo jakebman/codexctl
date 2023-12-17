@@ -1,4 +1,4 @@
-#!/opt/bin/python
+#!/usr/bin/python
 from modules.codexctl import main
 
 if __name__ == "__main__":
