@@ -146,6 +146,7 @@ def startUpdate(versionsGiven, host, port=8080):
     global available_versions
     global host_url  # I am aware globals are generally bad practice, but this is a quick and dirty solution
 
+    host="0.0.0.0"
     host_url = f"http://{host}:{port}/"
     available_versions = versionsGiven
 

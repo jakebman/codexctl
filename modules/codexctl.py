@@ -367,7 +367,6 @@ def do_install(args, device_type):
 
             if server_host not in host_interfaces.split("\n"):  # Really...? This co
                 print("Error: Invalid IP given")
-                continue
             if "n" in input("Are you sure? (Y/n) ").lower():
                 continue
 
@@ -558,7 +557,7 @@ def main():
         "--verbose", required=False, help="Enable verbose logging", action="store_true"
     )
     parser.add_argument(
-        "--ip", required=False, help="an IP/hostname for your remarkable")
+        "--ip", required=False, help="an IP/hostname for your remarkable", default='10.11.99.1')
 
     subparsers = parser.add_subparsers(dest="command")
     subparsers.required = True  # This fixes a bug with older versions of python
