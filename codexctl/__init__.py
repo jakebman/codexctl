@@ -167,8 +167,9 @@ class Manager:
 
         ### Transfer & Download functionalities
         elif function in ("transfer", "download"):
+            from .device import DeviceManager
             remarkable = DeviceManager(
-                remote=remote,
+                remote=args["remote"],
                 address=args["address"],
                 logger=self.logger,
                 authentication=args["password"],

@@ -119,6 +119,12 @@ executable: $(VENV_BIN_ACTIVATE)
 
 all: executable
 
+jake: executable
+	dist/${CODEXCTL_BIN} --password ~/.ssh/id_rsa --address 10.0.0.191 status
+
+jake-get: executable
+	dist/${CODEXCTL_BIN} download toltec
+
 .PHONY: \
 	all \
 	executable \
