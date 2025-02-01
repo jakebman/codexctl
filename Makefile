@@ -125,6 +125,9 @@ jake: executable
 jake-get: executable
 	dist/${CODEXCTL_BIN} download toltec
 
+jake-backup: executable
+	dist/${CODEXCTL_BIN} --password ~/.ssh/id_rsa --address 10.0.0.191 backup
+
 .PHONY: \
 	all \
 	executable \
