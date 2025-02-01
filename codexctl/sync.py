@@ -44,7 +44,9 @@ class RmWebInterfaceAPI:  # TODO: Add docstrings
         self, folderId="", currentLocation="", currentDocuments=[]
     ):
         data = self.__POST(f"documents/{folderId}")
-
+        if not data:
+            self.logger.error(f"documents/{folderId} is None")
+            return currentDocuments
         for item in data:
             self.logger.debug(f"Checking item: {item}")
 
