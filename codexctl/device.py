@@ -94,7 +94,7 @@ class DeviceManager:
 
             if possible_ips and host_address not in host_interfaces.split("\n"):
                 print("Error: Invalid IP given")
-                continue
+                # fallthrough to "are you sure"
 
             if "n" in input("Are you sure? (Y/n): ").lower():
                 continue
