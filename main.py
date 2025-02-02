@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # nuitka-project: --enable-plugin=pylint-warnings
 # nuitka-project: --enable-plugin=upx
 # nuitka-project: --warn-implicit-exceptions
