@@ -526,6 +526,7 @@ echo "fallback: ${OLDPART}"
             SystemExit: If there was an error installing the update
         """
 
+        # TODO: IP to host on vs. IP to have remarkable connect to
         server_host = self.get_host_address()
 
         self.logger.debug("Editing config file")
@@ -538,7 +539,7 @@ echo "fallback: ${OLDPART}"
             return
 
         thread = threading.Thread(
-            target=startUpdate, args=(version_available, server_host), daemon=True
+            target=startUpdate, args=(version_available, '172.30.199.141'), daemon=True
         )
         thread.start()
 
